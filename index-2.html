@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e5e5e3">
+<meta name="description" content="Portfolio Nafis — Programmer × Pharmacy">
+<title>NAFIS — Programmer × Pharmacy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#e5e5e3;
+  --bg-soft:#eeeeec;
+  --paper:#f7f7f5;
+  --paper2:#dededb;
+  --ink:#171717;
+  --text:#2e2e2c;
+  --muted:#6d6d69;
+  --line:#c9c9c5;
+  --dark:#343432;
+  --accent:#8f8f8b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--ink);color:#fff}
+
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:20;
+  opacity:.24;
+  background-image:
+    linear-gradient(rgba(255,255,255,.13) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.13) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,#000,transparent 90%);
+}
+.shape{
+  position:absolute;pointer-events:none;background:rgba(155,155,151,.18);
+}
+.shape.s1{width:150px;height:150px;right:0;top:84px}
+.shape.s2{width:110px;height:110px;left:0;top:0;clip-path:polygon(0 0,100% 0,65% 100%,0 100%)}
+.shape.s3{width:85px;height:85px;right:0;bottom:0;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.shape.s4{width:26px;height:26px;background:#a8a8a4}
+
+header{
+  height:86px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6.5vw;
+  border-bottom:1px solid var(--line);
+  background:rgba(229,229,227,.88);
+  backdrop-filter:blur(14px);
+  position:sticky;top:0;z-index:50;
+}
+.logo{
+  font-weight:800;letter-spacing:.28em;font-size:16px;
+  display:flex;align-items:center;gap:13px;
+}
+.logo i{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+nav{display:flex;gap:38px;align-items:center}
+nav a{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  position:relative;padding:34px 0;
+}
+nav a:after{
+  content:"";position:absolute;left:0;bottom:18px;width:0;height:1px;background:var(--ink);transition:.3s
+}
+nav a:hover:after,nav a.active:after{width:100%}
+.top-btn{
+  border:1px solid #8f8f8b;padding:13px 24px;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;background:transparent;
+  transition:.25s;
+}
+.top-btn:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+.menu{display:none;border:0;background:none;font-size:25px}
+
+section{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.inner{width:min(1130px,87vw);margin:auto}
+.label{
+  font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+  color:#353533;margin-bottom:28px;
+}
+.hero{min-height:580px;padding:74px 0 50px;background:var(--bg)}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 260px;gap:80px;position:relative;
+}
+.hero h1{
+  font-size:clamp(105px,16vw,190px);
+  line-height:.78;letter-spacing:-.075em;font-weight:900;
+  margin-left:-7px;
+}
+.hero-sub{
+  font-size:27px;letter-spacing:.19em;font-weight:500;margin-top:28px;
+}
+.hero-line{width:60px;height:1px;background:#858581;margin:30px 0 23px}
+.hero-copy{font-size:15px;line-height:1.8;color:var(--text);max-width:520px}
+.hero-copy span{display:block}
+.cta{
+  display:inline-flex;align-items:center;gap:45px;
+  background:var(--dark);color:#fff;padding:15px 21px;
+  margin-top:28px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+}
+.cta b{font-size:19px;font-weight:400}
+.profile{
+  border-left:1px solid #bdbdb9;padding-left:28px;padding-top:46px;
+}
+.profile-row{padding:0 0 23px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.profile-row small{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+.profile-row strong{font-size:12px;font-weight:500}
+.hero-deco{
+  position:absolute;right:240px;bottom:0;width:250px;height:220px;
+  border-right:1px solid #bdbdb9;border-top:1px solid #bdbdb9;border-radius:0 0 55px 0;
+  opacity:.7;
+}
+.hero-deco:before,.hero-deco:after{content:"";position:absolute;background:#999994}
+.hero-deco:before{width:6px;height:6px;right:-3px;top:68px}
+.hero-deco:after{width:22px;height:22px;left:80px;bottom:55px;background:#aaa}
+
+.about{padding:72px 0;background:#dfdfdd}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:85px;align-items:center}
+.about h2,.skills h2{
+  font-size:42px;line-height:1.02;letter-spacing:-.045em;margin-bottom:24px;
+}
+.about p{font-size:14px;line-height:1.8;color:var(--text);max-width:470px}
+.details{margin-top:30px;display:grid;grid-template-columns:90px 1fr;gap:12px;font-size:11px}
+.details b{font-size:9px;letter-spacing:.14em}
+.quote{
+  background:var(--paper);padding:45px 48px;min-height:250px;
+  position:relative;box-shadow:0 18px 45px rgba(0,0,0,.035);
+}
+.quote:before{content:"“";font-size:70px;line-height:.5;font-weight:800}
+.quote p{font-size:17px;line-height:1.8;margin:24px 0 24px 10px;max-width:390px}
+.quote em{font-style:normal;letter-spacing:.18em;font-size:11px;margin-left:auto;display:block;width:max-content}
+.quote:after{content:"";position:absolute;width:30px;height:30px;right:-14px;top:52px;background:#858581}
+
+.projects{padding:58px 0 72px;background:var(--bg-soft)}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}
+.section-head h2{font-size:39px;letter-spacing:-.04em}
+.view{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.project{
+  background:var(--paper);min-height:230px;padding:24px 22px;
+  border:1px solid #d2d2cf;display:flex;flex-direction:column;
+  transition:.3s;position:relative;
+}
+.project:hover{transform:translateY(-5px);box-shadow:0 16px 35px rgba(0,0,0,.06)}
+.project-num{font-size:10px;letter-spacing:.18em;margin-bottom:27px}
+.project-icon{position:absolute;right:23px;top:23px;font-size:24px}
+.project h3{font-size:20px;line-height:1.05;letter-spacing:-.025em;max-width:190px}
+.project p{font-size:11px;line-height:1.65;color:var(--muted);margin:16px 0 auto;max-width:260px}
+.project-foot{border-top:1px solid var(--line);padding-top:13px;margin-top:25px;font-size:9px;display:flex;justify-content:space-between;letter-spacing:.04em}
+.project-foot b{font-size:18px;font-weight:400}
+
+.skills{padding:62px 0 78px;background:#e3e3e1}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr 280px;gap:65px;margin-top:35px}
+.skill-title{font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:22px}
+.skill{margin-bottom:19px}
+.skill-top{display:flex;justify-content:space-between;font-size:10px;margin-bottom:7px}
+.track{height:4px;background:#cececb;overflow:hidden}
+.fill{height:100%;background:#555553}
+.other{border:1px solid #c4c4c0;padding:25px}
+.other h4{font-size:10px;letter-spacing:.14em;margin-bottom:20px}
+.other li{list-style:none;font-size:11px;padding:7px 0;border-bottom:1px solid #d0d0cc}
+.other li:before{content:"•";margin-right:8px}
+
+.journey{padding:70px 0;background:var(--bg)}
+.journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:35px}
+.item{padding:28px 24px;background:rgba(247,247,245,.55);border-top:2px solid #aaa}
+.date{font-size:9px;letter-spacing:.18em;margin-bottom:18px;color:#686864}
+.item h3{font-size:21px;margin-bottom:7px}
+.role{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#777;margin-bottom:18px}
+.item p{font-size:11px;line-height:1.7;color:var(--muted)}
+
+.contact{padding:90px 0;background:#d9d9d7}
+.contact h2{font-size:clamp(65px,10vw,125px);line-height:.82;letter-spacing:-.07em;margin-bottom:35px}
+.email{font-size:clamp(20px,3vw,35px);border-bottom:1px solid #777;padding-bottom:8px}
+.socials{display:flex;gap:25px;margin-top:35px}
+.socials a{font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+
+footer{padding:22px 6.5vw;background:#d2d2cf;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+
+.reveal{opacity:0;transform:translateY(20px);transition:.7s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:850px){
+  header{height:70px;padding:0 6vw}
+  nav{position:fixed;top:70px;right:0;left:0;background:#e5e5e3;display:none;flex-direction:column;gap:0;border-bottom:1px solid var(--line);padding:10px 6vw}
+  nav.open{display:flex}
+  nav a{padding:15px 0;width:100%;border-bottom:1px solid var(--line)}
+  nav a:after{bottom:0}
+  .top-btn{display:none}.menu{display:block}
+  .hero{padding:55px 0 45px}.hero-grid{grid-template-columns:1fr;gap:45px}
+  .hero h1{font-size:clamp(82px,25vw,145px)}
+  .hero-sub{font-size:18px;letter-spacing:.13em}
+  .profile{border-left:0;border-top:1px solid var(--line);padding:28px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .profile-row{margin:0}
+  .hero-deco{right:0;width:45%;height:170px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about h2,.skills h2{font-size:34px}
+  .project-grid,.journey-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr;gap:35px}
+  .quote{padding:35px 28px}
+  footer{padding:20px 6vw;gap:20px;flex-direction:column}
+}
+@media(max-width:480px){
+  .inner{width:88vw}
+  .label{font-size:9px}
+  .hero h1{font-size:27vw}
+  .details{grid-template-columns:75px 1fr}
+  .project{min-height:245px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#home">NAFIS <i></i></a>
+  <nav id="nav">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="top-btn" href="#contact">Let's Talk</a>
+  <button class="menu" id="menu">☰</button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
+  <div class="inner">
+    <div class="label reveal">01 / Identity</div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="reveal">NAFIS</h1>
+        <div class="hero-sub reveal">PROGRAMMER × PHARMACY</div>
+        <div class="hero-line reveal"></div>
+        <div class="hero-copy reveal">
+          <span>Pharmacy student with a passion for technology.</span>
+          <span>I build digital solutions that connect knowledge,</span>
+          <span>logic, and real-world impact.</span>
+        </div>
+        <a class="cta reveal" href="#projects">Explore My Work <b>→</b></a>
+      </div>
+      <aside class="profile reveal">
+        <div class="profile-row"><small>Field</small><strong>Software Development</strong></div>
+        <div class="profile-row"><small>Background</small><strong>Pharmacy</strong></div>
+        <div class="profile-row"><small>Focus</small><strong>Web • Logic • Technology</strong></div>
+        <div class="profile-row"><small>Status</small><strong>Learning / Building</strong></div>
+      </aside>
+      <div class="hero-deco"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="shape s4" style="right:8%;top:70px"></div>
+  <div class="inner">
+    <div class="label reveal">02 / About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="reveal">I TURN KNOWLEDGE<br>INTO SOLUTIONS</h2>
+        <p class="reveal">Saya adalah siswa Farmasi yang tertarik pada dunia IT. Saya belajar secara otodidak dan percaya bahwa teknologi bisa menjadi alat untuk memberikan manfaat nyata.</p>
+        <div class="details reveal">
+          <b>NAME</b><span>Muhammad Asadannafis Garnadi</span>
+          <b>ROLE</b><span>Student / Developer</span>
+          <b>EDUCATION</b><span>Pharmacy (SMK Bhakti Kencana)</span>
+          <b>INTEREST</b><span>Technology, History</span>
+          <b>APPROACH</b><span>Self-Taught Learner</span>
+        </div>
+      </div>
+      <div class="quote reveal">
+        <div>“</div>
+        <p>Saya membangun bukan hanya untuk bisa, tetapi untuk memahami dan memberikan solusi.</p>
+        <em>— NAFIS</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="inner">
+    <div class="label reveal">03 / Projects</div>
+    <div class="section-head reveal"><h2>SELECTED WORKS</h2><span class="view">View All Projects →</span></div>
+    <div class="project-grid">
+      <a class="project reveal" href="https://muhammadasadannafisgarnadinafi-lab.github.io/kalkulayordosisobat/" target="_blank" rel="noopener">
+        <span class="project-num">01</span><span class="project-icon">▣</span>
+        <h3>MEDICINE DOSE<br>CALCULATOR</h3>
+        <p>Web application for calculating medication doses accurately based on pharmaceutical logic.</p>
+        <div class="project-foot"><span>JavaScript　•　HTML　•　CSS</span><b>→</b></div>
+      </a>
+      <a class="project reveal" href="#" onclick="return false">
+        <span class="project-num">02</span><span class="project-icon">◖</span>
+        <h3>BIRTHDAY<br>PRONUNCIATION WEB</h3>
+        <p>Website that helps people pronounce birthdays in multiple languages.</p>
+        <div class="project-foot"><span>HTML　•　CSS　•　JavaScript</span><b>→</b></div>
+      </a>
+      <a class="project reveal" href="#" onclick="return false">
+        <span class="project-num">03</span><span class="project-icon">⚖</span>
+        <h3>PHARMACY & LAW<br>PROJECTS</h3>
+        <p>Projects that explore the intersection of pharmaceutical knowledge and legal perspective.</p>
+        <div class="project-foot"><span>Research　•　Writing　•　Web</span><b>→</b></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="inner">
+    <div class="label reveal">04 / Skills</div>
+    <h2 class="reveal">WHAT I WORK WITH</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-title">Development</div>
+        <div class="skill reveal"><div class="skill-top"><span>HTML</span><span>90%</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>CSS</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>JavaScript</span><span>75%</span></div><div class="track"><div class="fill" style="width:75%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>Problem Solving</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+      </div>
+      <div>
+        <div class="skill-title">Pharmacy Knowledge</div>
+        <div class="skill reveal"><div class="skill-top"><span>Pharmaceutical Knowledge</span><span>90%</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>Compounding</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>Dosage Calculation</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+        <div class="skill reveal"><div class="skill-top"><span>Medication Understanding</span><span>88%</span></div><div class="track"><div class="fill" style="width:88%"></div></div></div>
+      </div>
+      <div class="other reveal">
+        <h4>OTHER SKILLS</h4>
+        <ul><li>Public Speaking</li><li>History & Research</li><li>Logical Thinking</li><li>Time Management</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="inner">
+    <div class="label reveal">05 / Journey</div>
+    <h2 class="reveal" style="font-size:42px;letter-spacing:-.04em">STILL LEARNING.</h2>
+    <div class="journey-grid">
+      <div class="item reveal"><div class="date">NOW / 2026</div><h3>Pharmacy Student</h3><div class="role">SMK Bhakti Kencana</div><p>Menjalani pendidikan di jurusan Farmasi sambil mengembangkan pemahaman tentang peracikan, obat, dan konsep kefarmasian.</p></div>
+      <div class="item reveal"><div class="date">SELF TAUGHT</div><h3>IT / Programming</h3><div class="role">Independent Learning</div><p>Belajar web development dan pemrograman secara otodidak melalui eksperimen dan pembuatan project nyata.</p></div>
+      <div class="item reveal"><div class="date">ONGOING</div><h3>Build × Learn</h3><div class="role">Nafis Code Lab</div><p>Terus mengembangkan project yang berada di persimpangan teknologi, kefarmasian, sejarah, dan pengetahuan hukum.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="inner">
+    <div class="label reveal">06 / Contact</div>
+    <h2 class="reveal">LET'S<br>BUILD.</h2>
+    <a class="email reveal" href="mailto:asadannafis@gmail.com">asadannafis@gmail.com</a>
+    <div class="socials reveal">
+      <a href="https://instagram.com/daviszz_001" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://github.com/muhammadasadannafisgarnifi-lab" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>© 2026 NAFIS</span><span>Pharmacy × History × Technology</span></footer>
+
+<script>
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{nav.classList.toggle('open');menu.textContent=nav.classList.contains('open')?'×':'☰'});
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.textContent='☰'}));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const sections=[...document.querySelectorAll('main section')];
+const links=[...document.querySelectorAll('nav a')];
+const activeObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+entry.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -45% 0px'});
+sections.forEach(s=>activeObs.observe(s));
+</script>
+</body>
+</html>
